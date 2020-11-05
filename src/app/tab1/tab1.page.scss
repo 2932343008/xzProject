@@ -1,0 +1,9 @@
+ion-card {
+  margin: 0;
+}
+ion-card-title,
+ion-card-subtitle {
+  overflow: hidden; /*超出部分隐藏*/
+  white-space: nowrap; /*不换行*/
+  text-overflow: ellipsis;
+}

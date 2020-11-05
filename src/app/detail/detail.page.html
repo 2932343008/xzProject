@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>商品详情</ion-title>
+    <ion-button slot="end" fill="clear" color="danger">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  *ngIf="res"
+  style="--padding-start: 10px; --padding-end: 10px; --padding-top: 10px"
+>
+  <ion-item>
+    <ion-label>产品型号:{{res.details.lname}}</ion-label>
+  </ion-item>
+  <ion-slides
+    pager="ios"
+    [options]="{loop:true,autoplay:{disableOnInteraction: false
+
+  }}"
+  >
+    <ion-slide *ngFor="let item of res.details.picList">
+      <img src="http://101.96.128.94:9999/{{item.md}}" alt="" />
+    </ion-slide>
+  </ion-slides>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="font-size: 15px"
+        >{{res.details.title}}</ion-card-title
+      >
+      <ion-card-subtitle>{{res.details.subtitle}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label color="danger" style="font-size: 1.3em"
+          >¥{{res.details.price}}</ion-label
+        >
+        <ion-button slot="end" color="danger" size="large">
+          <ion-icon slot="start" name="cart"></ion-icon>
+          添加到购物车
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>CPU: {{res.details.cpu}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>内存: {{res.details.memory}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>硬盘: {{res.details.disk}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>系统: {{res.details.os}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>承诺: {{res.details.promise}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>显卡: {{res.details.video_card}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>显存: {{res.details.video_memory}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label
+          >上市时间: {{res.details.shelf_time | date:'y-MM-dd'}}</ion-label
+        >
+      </ion-item>
+
+      <div [innerHTML]="res.details.details"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
